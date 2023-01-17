@@ -1,5 +1,7 @@
 {
 	"scripts": {
-		"pwa": "create-pwa --icon=\"public/icon.ico\" --launch=\"public/icon.ico\""
+		"pwa": "create-pwa --icon=\"public/icon.ico\" --launch=\"public/icon.ico\"",
+		"start": "node chat.js"
 	}
+	
 }
