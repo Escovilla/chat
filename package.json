@@ -1,7 +1,19 @@
+
 {
-	"scripts": {
-		"pwa": "create-pwa --icon=\"public/icon.ico\" --launch=\"public/icon.ico\"",
-		"start": "node chat.js"
-	}
-	
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "chat.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":  "node chat.js"
+  },
+  "author": "",
+  "license": "ISC",
+  
+  "dependencies": {
+    "create-pwa": "^2.7.0",
+    "express": "^4.18.2",
+    "socket.io": "^4.5.4"
+  }
 }
