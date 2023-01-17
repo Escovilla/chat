@@ -1,0 +1,22 @@
+{
+    "name": "chat",
+    "short_name": "chat",
+    "description": "Progressive Web App chat",
+    "icons": [
+      {
+        "src": "icon.ico",
+        "sizes": "32x32",
+        "type": "image/png"
+      },
+
+      {
+        "src": "k.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "index.html",
+    "display": "fullscreen",
+    "theme_color": "#B12A34",
+    "background_color": "#B12A34"
+  }

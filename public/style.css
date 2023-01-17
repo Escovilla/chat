@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Ubuntu&display=swap');
+* {
+  box-sizing: border-box;
+}
+
+* ::-webkit-selection, [contenteditable]::-webkit-selection {
+	background: #3af;
+}
+
+* ::-moz-selection, [contenteditable]::-moz-selection {
+	background: #3af;
+}
+
+* ::selection, [contenteditable]::selection {
+	background: #3af;
+}
+
+ ::-webkit-selection, [contenteditable]::-webkit-selection {
+	background: #3af;
+}
+
+
+* ::-webkit-selection, [contenteditable]::-webkit-selection {
+	background: #3af;
+}
+
+* ::-moz-selection, [contenteditable]::-moz-selection {
+	background: #3af;
+}
+
+* ::selection, [contenteditable]::selection {
+	background: #3af;
+}
+
+* ::-webkit-selection, [contenteditable]::-webkit-selection {
+	background: #3af;
+}
+/* Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+/* Edge, Firefox */
+
+html, input {
+  font-family: 'Ubuntu', sans-serif;
+
+}
+
+html, body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  word-wrap: break-word;
+}
+
+.pages {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.page {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.login.page {
+  background-size: 100%;
+  background-color: #3af;
+  width: 70%;
+
+}
+#container{
+  width: 100%;
+  display: flex;
+ 
+}
+#tupaf{
+  width: 75%;
+}
+
+.login.page .form {
+  height: 100px;
+  margin-top: -100px;
+  position: absolute;
+
+  text-align: center;
+  top: 50%;
+  width: 100%;
+}
+
+.login.page .form .usernameInput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  outline: none;
+  padding-bottom: 15px;
+  text-align: center;
+  width: 400px;
+  color: white;
+}
+
+.login.page .title {
+  font-size: 200%;
+  color: white;
+}
+
+.login.page .usernameInput {
+  font-size: 200%;
+  letter-spacing: 3px;
+}
+
+.login.page .title, .login.page .usernameInput {
+  font-weight: 100;
+  outline: none;
+}
+
+.usernameInput {
+  cursor: text !important;
+}
+
+
+.title {
+  font-weight: bold;
+}
+
+.chat.page {
+  display: none;
+  background-size: 100%;
+  
+  max-height: 100%;
+  min-height: 100%;
+  margin: auto;
+  height: 100%;
+  background-color: #3af;
+  width: 70%;
+  zoom: 0;
+  max-zoom: 0;
+  min-zoom: 0;
+}
+
+.messages {
+  font-size: 150%;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.inputMessage {
+  font-size: 150%;
+  height: 15%;
+  font-family: ubuntu;
+  cursor: text !important;
+}
+
+.log {
+  color: white;
+  font-size: 70%;
+  margin: 5px;
+  text-align: center;
+}
+
+.chatArea {
+  height: 100%;
+  padding-bottom: 60px;
+  border: 5px #000;
+}
+
+.messages {
+  height: 100%;
+  margin: 0;
+  overflow-y: scroll;
+  padding: 10px 20px 10px 20px;
+}
+
+.message.typing .messageBody {
+  color: white;
+}
+
+.message .messageBody {
+ color: white;
+}
+
+.username {
+  font-weight: 700;
+  overflow: hidden;
+  padding-right: 15px;
+  text-align: right;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+::placeholder {
+  opacity: 1;
+}
+
+.inputMessage {
+  border: 5px solid rgba(0, 0, 0, 0.7);
+  bottom: 0;
+  height: 60px;
+  left: 0;
+  outline: none;
+  padding-left: 10px;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+blink {
+  animation: blink-animation 1s steps(5, start) infinite;
+}
+
+
+@media only screen and (max-width: 991px){
+  /* .login.page {
+    
+    width: 100%;
+  
+  } */
+  #container{
+    width: 100%;
+
+  }
+  /* .chat.page {
+    width: 100%;
+
+  } */
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+body {
+  -webkit-animation-name: cursor;
+  -webkit-animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+  animation-name: cursor;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes cursor {
+  0%   {cursor: ns-resize;}
+  25%  {cursor: sw-resize;}
+  50%  {cursor: ew-resize;}
+  75%  {cursor: se-resize;}
+  100% {cursor: ns-resize;}
+}
+
+@keyframes cursor {
+  0%   {cursor: ns-resize;}
+  25%  {cursor: sw-resize;}
+  50%  {cursor: ew-resize;}
+  75%  {cursor: se-resize;}
+  100% {cursor: ns-resize;}
+}
+
+input[type=text] {
+  cursor: text !important;
+}div.pop-up {
+  position: relative;
+  left: 128px;
+  bottom: 68px;
+  width: 120px;
+  height: 80px;
+  background-color: #3795f6;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+div.pop-up p {
+  position: relative;
+  bottom: 10px;
+  text-align: center;
+  color: #fff;
+}
+
+div.arrow-down {
+  position: relative;
+  top: 78px;
+  left: 45px;
+  width: 0; 
+  height: 0; 
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  
+  border-top: 15px solid #3795f6;
+}
+
+div.online-indicator {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  
+  background-color: #0fcc45;
+  border-radius: 50%;
+  
+  position: relative;
+}
+span.blink {
+  display: block;
+  width: 15px;
+  height: 15px;
+  
+  background-color: #0fcc45;
+  opacity: 0.7;
+  border-radius: 50%;
+  
+  animation: blink 1s linear infinite;
+}
+
+h2.online-text {
+  display: inline;
+  
+  font-family: 'Rubik', sans-serif;
+  font-weight: 400;
+  text-shadow: 0px 3px 6px rgba(150, 150, 150, 0.2);
+  
+  position: relative;
+  cursor: pointer;
+}
+
+/*Animations*/
+.online{
+  margin-top: 30px;
+  display: none;
+}
+@keyframes blink {
+  100% { transform: scale(2, 2); 
+          opacity: 0;
+        }
+}
