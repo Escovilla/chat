@@ -33,7 +33,7 @@ $(function() {
     var lastTypingTime;
     var $currentInput = $usernameInput;
   
-    var socket = io();
+    var socket = io({ transports: ["websocket"] });
   
     function addParticipantsMessage(data) {
       var message = '';
