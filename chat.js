@@ -1,6 +1,3 @@
-
-
-
 const { json } = require('express');
 var express = require('express');
 var app = express();
@@ -12,74 +9,18 @@ var port = process.env.PORT || 9000;
 var dns = require('dns')
 const userC = []
 let history 
-const IP_BLOCK_TIME = 60000;
-const MAX_TRIES = 4;
 
-const ipBlockList = new Map();
-
-app.use((req, res, next) => {
-	let hostname 
-    let ip = req.ip.replace(/^.*:/, '');
-	
-    let auth = { login: 'td', password: 'tfjotld' };
-    const b64auth = (req.headers.authorization || '').split(' ')[1] || '';
-    const [login, password] = Buffer.from(b64auth, 'base64').toString().split(':');
-
-    if (!ipBlockList.has(ip)) {
-        ipBlockList.set(ip, {
-            attempts: 0,
-            blockedUntil: 0
-        });
-    }
-
-    let ipData = ipBlockList.get(ip);
-
-    if (ipData.blockedUntil > Date.now()) {
-		dns.reverse(ip, function(err, domains) {
-			console.log(hostname)
-	
-			res.status(401).send(`Hi your ip is : `+ip+` and your hostname is: `+domains[0]+`, ---- try again in ${Math.ceil((ipData.blockedUntil - Date.now()) / 1000)} seconds.`);
-
-		});
-		
-        return;
-    }
-
-    if (login && password && login === auth.login && password === auth.password) {
-        ipBlockList.delete(ip);
-        return next();
-    }
-
-    ipData.attempts++;
-
-    if (ipData.attempts >= MAX_TRIES) {
-        ipData.blockedUntil = Date.now() + IP_BLOCK_TIME;
-		console.log(hostname)
-
-        dns.reverse(ip, function(err, domains) {
-	
-			res.status(401).send(`Hi your ip is : `+ip+` and your hostname is: `+domains[0]+`, ---- try again in ${Math.ceil((ipData.blockedUntil - Date.now()) / 1000)} seconds.`);
-
-		});
-    } else {
-        res.set('WWW-Authenticate', 'Basic realm="401"');
-        res.status(401).send('Hi '+ip+" I see you");
-    }
-});
 server.listen(port, function() {
 	console.log('Server listening at port %d', port);
 });
 
 fs.readFile('public/history.txt', 'utf8', (err, data) => {
-	
 	if (err) {
 	  console.error(err);
 	  return;
 	}
 	history= data
-	
   });
-
 
 app.use(express.static(path.join(__dirname, 'public')));
 
