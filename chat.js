@@ -7,8 +7,14 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var port = process.env.PORT || 9000;
 var dns = require('dns')
+
+const webpush = require('web-push');
+const bodyParser = require('body-parser');
+
+
 const userC = []
 let history 
+app.use(bodyParser.json());
 
 server.listen(port, function() {
 	console.log('Server listening at port %d', port);
@@ -22,6 +28,12 @@ fs.readFile('public/history.txt', 'utf8', (err, data) => {
 	history= data
   });
 
+const publicVapidKey = "BNwhAYBJCkzL10R5odueSiDkMzI8IeNLGp8lnsstedgJyqD1Xt1G5tJScxxSgltB1XIuCCZGAL4aAki0_7o_L7o";
+const privateVapidKey = "8KAd_QpqpowLf9w9h_LxkWjC8BVxEhmuRUxaCW4WVIk";
+
+webpush.setVapidDetails("mailto:escovillanico5j@gmail.com", publicVapidKey, privateVapidKey);
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 var numUsers = 0;
@@ -29,29 +41,29 @@ var numUsers = 0;
 io.on('connection', function(socket) {
 	var addedUser = false;
 	fs.readFile('public/history.txt', 'utf8', (err, data) => {
-	if (err) {
-		console.error(err);
-		return;
-	}
-	history= data
-	
+		if (err) {
+			console.error(err);
+			return;
+		}
+		history= data
 	});
 	socket.on('new message', function(data) {
-	
-	let historyap = {
-		username: socket.username,
-		message: data
-	};
-	
-	fs.appendFile('public/history.txt', "@@"+JSON.stringify(historyap)+"", err => {
-		if (err) {
-		  console.error(err);
-		}
-		// done!
-	  });
-	
-
- 	socket.broadcast.emit('new message', {
+		app.post('/subscribe', (req, res) => {
+			const subscription = req.body;
+			res.status(201).json({});
+			const payload = JSON.stringify({ title: socket.username+" Sent a message", body: data });
+			webpush.sendNotification(subscription, payload).catch(console.log);
+		})
+		let historyap = {
+			username: socket.username,
+			message: data
+		};
+		fs.appendFile('public/history.txt', "@@"+JSON.stringify(historyap)+"", err => {
+			if (err) {
+			  console.error(err);
+			}
+		  });
+		socket.broadcast.emit('new message', {
 			username: socket.username,
 			message: data
 		});
