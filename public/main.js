@@ -35,31 +35,31 @@ $(function() {
   
     var socket = io();
     
-    const publicVapidKey = "BNwhAYBJCkzL10R5odueSiDkMzI8IeNLGp8lnsstedgJyqD1Xt1G5tJScxxSgltB1XIuCCZGAL4aAki0_7o_L7o";
+//     const publicVapidKey = "BNwhAYBJCkzL10R5odueSiDkMzI8IeNLGp8lnsstedgJyqD1Xt1G5tJScxxSgltB1XIuCCZGAL4aAki0_7o_L7o";
     
     
-    if('serviceWorker' in navigator) {
-          registerServiceWorker().catch(console.log)
-      }
+//     if('serviceWorker' in navigator) {
+//           registerServiceWorker().catch(console.log)
+//       }
 
-      async function registerServiceWorker() {
-          const register = await navigator.serviceWorker.register('./worker.js', {
-              scope: '/'
-          });
+//       async function registerServiceWorker() {
+//           const register = await navigator.serviceWorker.register('./worker.js', {
+//               scope: '/'
+//           });
 
-          const subscription = await register.pushManager.subscribe({
-              userVisibleOnly: true,
-              applicationServerKey: publicVapidKey,
-          });
+//           const subscription = await register.pushManager.subscribe({
+//               userVisibleOnly: true,
+//               applicationServerKey: publicVapidKey,
+//           });
 
-          await fetch("/subscribe", {
-              method: "POST",
-              body: JSON.stringify(subscription),
-              headers: {
-                  "Content-Type": "application/json",
-              }
-          })
-      }
+//           await fetch("/subscribe", {
+//               method: "POST",
+//               body: JSON.stringify(subscription),
+//               headers: {
+//                   "Content-Type": "application/json",
+//               }
+//           })
+//       }
     
       
     
