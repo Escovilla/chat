@@ -36,7 +36,30 @@ $(function() {
     var socket = io();
     
     const publicVapidKey = "BNwhAYBJCkzL10R5odueSiDkMzI8IeNLGp8lnsstedgJyqD1Xt1G5tJScxxSgltB1XIuCCZGAL4aAki0_7o_L7o";
+    
+    
+    if('serviceWorker' in navigator) {
+          registerServiceWorker().catch(console.log)
+      }
 
+      async function registerServiceWorker() {
+          const register = await navigator.serviceWorker.register('./worker.js', {
+              scope: '/'
+          });
+
+          const subscription = await register.pushManager.subscribe({
+              userVisibleOnly: true,
+              applicationServerKey: publicVapidKey,
+          });
+
+          await fetch("/subscribe", {
+              method: "POST",
+              body: JSON.stringify(subscription),
+              headers: {
+                  "Content-Type": "application/json",
+              }
+          })
+      }
     
       
     
@@ -71,28 +94,7 @@ $(function() {
     }
   
     function sendMessage() {
-      if('serviceWorker' in navigator) {
-          registerServiceWorker().catch(console.log)
-      }
-
-      async function registerServiceWorker() {
-          const register = await navigator.serviceWorker.register('./worker.js', {
-              scope: '/'
-          });
-
-          const subscription = await register.pushManager.subscribe({
-              userVisibleOnly: true,
-              applicationServerKey: publicVapidKey,
-          });
-
-          await fetch("/subscribe", {
-              method: "POST",
-              body: JSON.stringify(subscription),
-              headers: {
-                  "Content-Type": "application/json",
-              }
-          })
-      }
+      
         
       var newTitle = 'Chat Chat lang';
       document.title = newTitle;
