@@ -26,7 +26,7 @@ $(function() {
     var $loginPage = $('.login.page');
     var $chatPage = $('.nico');
     var $online = $('.online');
-  
+    
     var username;
     var connected = false;
     var typing = false;
@@ -34,7 +34,8 @@ $(function() {
     var $currentInput = $usernameInput;
   
     var socket = io();
-  
+
+    
     function addParticipantsMessage(data) {
       var message = '';
 
@@ -290,7 +291,14 @@ $(function() {
         }
       }
     });
-  
+
+    $(".sub").click(()=>{ 
+      sendMessage();
+      socket.emit('stop typing');
+      typing = false;
+      }
+    )
+
     $inputMessage.on('input', function() {
       updateTyping();
     });
@@ -348,8 +356,7 @@ $(function() {
     });
   
     socket.on('stop typing', function(data) {
-      console.log("herrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
-      console.log(data)
+      
       removeChatTyping(data);
     });
   
