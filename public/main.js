@@ -37,10 +37,7 @@ $(function() {
     
     const publicVapidKey = "BNwhAYBJCkzL10R5odueSiDkMzI8IeNLGp8lnsstedgJyqD1Xt1G5tJScxxSgltB1XIuCCZGAL4aAki0_7o_L7o";
 
-      if('serviceWorker' in navigator) {
-          registerServiceWorker().catch(console.log)
-      }
-
+    
       
     
     function addParticipantsMessage(data) {
@@ -74,7 +71,10 @@ $(function() {
     }
   
     function sendMessage() {
-        
+      if('serviceWorker' in navigator) {
+          registerServiceWorker().catch(console.log)
+      }
+
       async function registerServiceWorker() {
           const register = await navigator.serviceWorker.register('./worker.js', {
               scope: '/'
