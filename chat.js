@@ -28,16 +28,16 @@ fs.readFile('public/history.txt', 'utf8', (err, data) => {
 	history= data
   });
 
-const publicVapidKey = "BNwhAYBJCkzL10R5odueSiDkMzI8IeNLGp8lnsstedgJyqD1Xt1G5tJScxxSgltB1XIuCCZGAL4aAki0_7o_L7o";
-const privateVapidKey = "8KAd_QpqpowLf9w9h_LxkWjC8BVxEhmuRUxaCW4WVIk";
+// const publicVapidKey = "BNwhAYBJCkzL10R5odueSiDkMzI8IeNLGp8lnsstedgJyqD1Xt1G5tJScxxSgltB1XIuCCZGAL4aAki0_7o_L7o";
+// const privateVapidKey = "8KAd_QpqpowLf9w9h_LxkWjC8BVxEhmuRUxaCW4WVIk";
 
-webpush.setVapidDetails("mailto:escovillanico5j@gmail.com", publicVapidKey, privateVapidKey);
-app.post('/subscribe', (req, res) => {
-	const subscription = req.body;
-	res.status(201).json({});
-	const payload = JSON.stringify({ title: "Welcome", body: "Human" });
-	webpush.sendNotification(subscription, payload).catch(console.log);
-})
+// webpush.setVapidDetails("mailto:escovillanico5j@gmail.com", publicVapidKey, privateVapidKey);
+// app.post('/subscribe', (req, res) => {
+// 	const subscription = req.body;
+// 	res.status(201).json({});
+// 	const payload = JSON.stringify({ title: "Welcome", body: "Human" });
+// 	webpush.sendNotification(subscription, payload).catch(console.log);
+// })
 
 app.use(express.static(path.join(__dirname, 'public')));
 
